@@ -51,4 +51,20 @@ if (idKunde==="4711" && kennwort==="123"){
     })
     }
 
+    app.get('/impressum',(req, res, next) => {   
+
+        let idKunde = req.cookies['istAngemeldetAls']
+        
+        if(idKunde){
+            console.log("Kunde ist angemeldet als " + idKunde)
+            res.render('impressum.ejs', {                              
+            })
+        }else{
+            res.render('login.ejs', {                    
+            })    
+        }
+    })
+
 })
+
+
