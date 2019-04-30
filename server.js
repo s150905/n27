@@ -1,10 +1,9 @@
-class Konto{ 
+class Konto{
     constructor(){
-     this.kontonummer
-     this.kontoart   
+        this.Kontonummer
+        this.Kontoart
     }
 }
-
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -83,7 +82,7 @@ app.get('/kontoAnlegen',(req, res, next) => {
     if(idKunde){
         console.log("Kunde ist angemeldet als " + idKunde)
         res.render('kontoAnlegen.ejs', { 
-            melung : ""                             
+            meldung : ""                             
         })
     }else{
         res.render('login.ejs', {                    
@@ -96,13 +95,14 @@ app.post('/kontoAnlegen',(req, res, next) => {
     let idKunde = req.cookies['istAngemeldetAls']
     
     if(idKunde){
-let konto = new Konto()
-konto.Kontonummer = req.body.kontonummer
-konto.kontoart = req.body.kontoart
+
+        let konto = new Konto()
+        konto.Kontonummer = req.body.kontonummer
+        konto.Kontoart = req.body.kontoart
 
         console.log("Kunde ist angemeldet als " + idKunde)
-        res.render('kontoAnlegen.ejs', {   
-        meldung: "Das Konto " + konto.Kontonummer +"wurde erfolgreich angelegt."                      
+        res.render('kontoAnlegen.ejs', {                              
+           meldung : "Das Konto " + konto.Kontonummer + " wurde erfolgreich angelegt." 
         })
     }else{
         res.render('login.ejs', {                    
